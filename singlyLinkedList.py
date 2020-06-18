@@ -44,7 +44,7 @@ class Linkedlist():
         i = 0
         if index == 0:
             self.prepend(newNode.data)
-        elif index > self.length:
+        elif index == self.length:
             self.append(newNode.data)
         else:
             while i < self.length:
@@ -64,12 +64,12 @@ class Linkedlist():
                 self.head = currentNode.next
                 self.length-=1
                 break
-            if i == self.length-1:
-                currentNode.next = None
-                self.tail = currentNode
-                self.length-=1
-                break
             if i == index - 1:
+                if currentNode.next == self.tail:
+                    currentNode.next = None
+                    self.tail = currentNode
+                    self.length-=1
+                    break
                 currentNode.next = currentNode.next.next
                 self.length-=1
                 break
@@ -94,12 +94,12 @@ m.append(100)
 m.append(101)
 m.append(102)
 m.prepend(99)
-m.insert(0,98)
-m.insert(7,103)
-m.insert(3,1000)
-m.remove(0)
+m.insert(0,97)
+m.insert(5,104)
+# m.reverse()
 m.remove(5)
-m.remove(2)
-m.reverse()
+m.remove(4)
+m.remove(3)
 print(m.printer())
+print(m.tail.data)
 print(m)
